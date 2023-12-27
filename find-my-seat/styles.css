@@ -37,6 +37,7 @@ label {
   color: #336666;
   font-family: Garamond, serif;
   font-weight: bold;
+  font-size: 20px;
 }
 
 select {
@@ -44,29 +45,51 @@ select {
   margin-right: 10px;
 }
 
+/* Styling the dropdown box */
+input#name {
+  opacity: 0.4; 
+  width: 200px; 
+  height: 30px; 
+  border-radius: 10px;
+}
+
+datalist#nameList {
+  opacity: 0.4; 
+  width: 200px;
+  border-radius: 10px;
+}
+
+datalist#nameList option:checked {
+  color: #007bff; /* Adjust font color for the selected option */
+  font-weight: bold; /* Make the selected option bold */
+}
+
 .question p {
   color: #336666;
   font-family: Garamond, serif;
   font-weight: bold;
+  font-size: 20px;
 }
 
 input[type="radio"] {
-  margin-bottom: 25px; /* Adjust distance between radio buttons */
+  margin-bottom: 30px; /* Adjust distance between radio buttons */
 }
 
 /* Changing font color of radio button labels */
 input[type="radio"] + label {
   color: #333333;
   font-weight: lighter;
+  font-size: 20px;
 }
 
 button {
-  padding: 8px 16px;
+  padding: 9px 18px;
   background-color: #669999;
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 20px; /* Adding border-radius for rounded corners */
+  font-size: 15px;
 }
 
 button:hover {
@@ -83,6 +106,7 @@ button:hover {
 .seat-number {
   margin-bottom: 10px;
   color: #993366;
+  font-size: 20px;
 }
 
 .bold {
@@ -105,4 +129,42 @@ button:hover {
 #logo {
 	width: 100px;
 	height:
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* Media query for responsive design 在屏幕宽度小于像素时应用这些规则 */
+@media screen and (max-width: 450px) {
+  body {
+    padding: 20px;
+	font-size: 20px;
+  }
+
+  input#name,
+  datalist#nameList {
+    width: 100%;
+  }
+
+  button#findSeatBtn {
+    width: 100%;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 400px; /* Adjust max-width as needed */
+    margin: 0 auto;
+  }
+
+  img#seatmap {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  
 }

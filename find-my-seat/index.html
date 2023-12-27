@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Find My Seat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add viewport meta tag -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,10 +13,11 @@
 
     <div class="center">
       <label for="name">Select Your Name:</label>
-      <select id="name">
-        <option value="">-- Select Name --</option>
+      <input type="text" id="name" list="nameList" placeholder="Type to search...">
+      <datalist id="nameList">
         <!-- Options will be dynamically added using JavaScript -->
-      </select>
+      </datalist>
+	  <p id="errorMessage" class="error-message"></p> <!-- Error message display -->
     </div>
 
     <div class="center">
@@ -29,7 +31,7 @@
 			<label for="no">No</label>
 		  </div>
 	
-      <button id="findSeatBtn">Find My Seat</button>
+      <button id="findSeatBtn" disabled>Find My Seat</button>
     </div>
   </div>
 
