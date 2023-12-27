@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find My Seat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="countdown-banner" id="countdownBanner"></div>
+  
+  <div class = "container">
+      <img src="./images/logo.png" alt="" id="logo">
+	  <h1>Welcome to Greenworld Logistics Anniversary Dinner</h1>
+	  <div class="message" id="message"></div>
+	  <div class="seat-number" id="seatNumber"></div>
+	  <img src="./images/seatmap.jpeg" alt="Seat Map">
+  </div>
+
+  <script src="seat.js"></script>
+  <script>
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const driving = urlParams.get('driving');
+      const name = urlParams.get('name');
+
+      const messageDiv = document.getElementById('message');
+      const seatNumberDiv = document.getElementById('seatNumber');
+
+      if (driving === 'yes') {
+        messageDiv.textContent = "You may show your parking ticket at the counter at the end of the event to redeem parking fees. Enjoy the dinner!";
+      } else if (driving === 'no') {
+        messageDiv.textContent = "Enjoy the dinner!";
+      } else {
+        messageDiv.textContent = "Invalid selection";
+      }
+
+      // Extracting seat number from the seats object
+      if (name && seats[name]) {
+	    const seatNumberMessage = name + `'s seat is: <span class="bold"> ${seats[name]} </span>`;
+        seatNumberDiv.innerHTML = seatNumberMessage;
+      }
+
+      // Show countdown banner after 5 seconds delay
+      const countdownBanner = document.getElementById('countdownBanner');
+      countdownBanner.style.display = 'block';
+      let countdown = 30; // 30 seconds countdown
+
+      const countdownInterval = setInterval(function() {
+        countdownBanner.textContent = `Redirecting back in ${countdown} seconds...`;
+        countdown--;
+
+        if (countdown < 0) {
+          clearInterval(countdownInterval);
+          window.location.href = 'index.html'; // Redirect to index.html after countdown
+        }
+      }, 1000); // Update countdown every 1 second (1000 milliseconds)
+    };
+  </script>
+</body>
+</html>

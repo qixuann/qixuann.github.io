@@ -1,0 +1,108 @@
+/* Add your CSS styles here */
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('./images/eventposter.png'); 
+  background-size: cover;
+}
+
+
+
+.container {
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin-bottom: 25px;
+  font-family: Times New Roman;
+  color: #333333;
+}
+
+label {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  color: #336666;
+  font-family: Garamond, serif;
+  font-weight: bold;
+}
+
+select {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.question p {
+  color: #336666;
+  font-family: Garamond, serif;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin-bottom: 25px; /* Adjust distance between radio buttons */
+}
+
+/* Changing font color of radio button labels */
+input[type="radio"] + label {
+  color: #333333;
+  font-weight: lighter;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #669999;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px; /* Adding border-radius for rounded corners */
+}
+
+button:hover {
+  background-color: #CCFFCC;
+}
+
+.message{
+  margin-bottom: 15px;
+  font-family: Courier New;
+  color: #CC9999;
+  font-weight: bold;
+}
+
+.seat-number {
+  margin-bottom: 10px;
+  color: #993366;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* Countdown banner styles */
+.countdown-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(51, 51, 51, 0.7); /* Adjust the transparency here (0.7 for 70%) */
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  display: none;
+}
+
+#logo {
+	width: 100px;
+	height:
+}

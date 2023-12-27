@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find My Seat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <img src="./images/logo.png" alt="" id="logo">
+    <h1>Welcome to Greenworld Logistics Anniversary Dinner</h1>
+
+    <div class="center">
+      <label for="name">Select Your Name:</label>
+      <select id="name">
+        <option value="">-- Select Name --</option>
+        <!-- Options will be dynamically added using JavaScript -->
+      </select>
+    </div>
+
+    <div class="center">
+	<div class="question">
+		<p>Do you drive to the dinner?</p>
+	</div>
+		  <div>
+			<input type="radio" id="yes" name="driving" value="yes">
+			<label for="yes">Yes</label>
+			<input type="radio" id="no" name="driving" value="no">
+			<label for="no">No</label>
+		  </div>
+	
+      <button id="findSeatBtn">Find My Seat</button>
+    </div>
+  </div>
+
+  <script src="seat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
