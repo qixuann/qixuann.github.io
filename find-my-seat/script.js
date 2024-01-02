@@ -20,7 +20,7 @@ function handleDrivingSelection() {
         driving: drivingStatus
       };
 
-      fetch('http://127.0.0.1:5000/checkin', {
+      fetch('http://8.217.178.249:8888/checkin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
