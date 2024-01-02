@@ -1,5 +1,3 @@
-
-
 // Function to handle radio button selection
 function handleDrivingSelection() {
   var drivingYes = document.getElementById('yes');
@@ -9,18 +7,46 @@ function handleDrivingSelection() {
 
   findSeatBtn.addEventListener('click', function() {
     if ((drivingYes.checked || drivingNo.checked) && nameSelect.value !== "") {
-      // Redirect based on selection
-      if (drivingYes.checked) {
-        window.location.href = `result.html?driving=yes&name=${nameSelect.value}`;
-      } else {
-        window.location.href = `result.html?driving=no&name=${nameSelect.value}`;
-      }
+      const selectedName = nameSelect.value; // Get the selected name from dropdown
+      const tableNumber = seats[selectedName]; // Get table number based on selected name from seat.js data
+
+      const checkInStatus = 'Yes'; // Check-in status is 'Yes' when 'Find My Seat' button is clicked
+      const drivingStatus = drivingYes.checked ? 'Yes' : (drivingNo.checked ? 'No' : '');
+
+      const checkInData = {
+        name: selectedName,
+        table_number: tableNumber || '',
+        check_in_status: checkInStatus,
+        driving: drivingStatus
+      };
+
+      fetch('http://127.0.0.1:5000/checkin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(checkInData)
+      })
+      .then(response => {
+        if (response.ok) {
+          // Redirect based on selection
+          if (drivingYes.checked) {
+            window.location.href = `result.html?driving=yes&name=${selectedName}`;
+          } else {
+            window.location.href = `result.html?driving=no&name=${selectedName}`;
+          }
+        } else {
+          // Handle error
+        }
+      })
+      .catch(error => {
+        // Handle network error
+      });
     } else {
       alert("Please select your name and answer whether you drive to the dinner.");
     }
   });
 }
-
 // Populate dropdown on page load and handle radio button selection
 window.onload = function() {
   const nameInput = document.getElementById('name');
