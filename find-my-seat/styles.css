@@ -8,8 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('./images/eventposter.png'); 
-  background-size: cover;
+  background-color: #f7f7f7;
 }
 
 
@@ -46,20 +45,20 @@ select {
 }
 
 /* Styling the dropdown box */
-input#name {
-  opacity: 0.4; 
+input#company {
+  opacity: 0.7; 
   width: 200px; 
   height: 30px; 
   border-radius: 10px;
 }
 
-datalist#nameList {
-  opacity: 0.4; 
+datalist#companyList {
+  opacity: 0.7; 
   width: 200px;
   border-radius: 10px;
 }
 
-datalist#nameList option:checked {
+datalist#companyList option:checked {
   color: #007bff; /* Adjust font color for the selected option */
   font-weight: bold; /* Make the selected option bold */
 }
@@ -96,17 +95,35 @@ button:hover {
   background-color: #CCFFCC;
 }
 
-.message{
-  margin-bottom: 15px;
-  font-family: Courier New;
-  color: #CC9999;
+/* center and style the sentence above the input box for guest list */
+.sentence-above-input {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #336666;
+  font-family: Garamond, serif;
   font-weight: bold;
+  font-size: 20px;
 }
 
-.seat-number {
-  margin-bottom: 10px;
-  color: #993366;
-  font-size: 20px;
+/* input box for guest name */
+#guestName {
+  display: block;
+  margin: auto;
+  width: 200px; 
+  height: 30px; 
+  border-radius: 10px;
+  margin-bottom: 15px;
+  opacity: 0.7; 
+}
+
+
+.message{
+  margin-bottom: 15px;
+  font-family: Times New Roman;
+  color: #996633;
+  font-style: italic;
+  font-size: 18px;
 }
 
 .bold {
@@ -119,7 +136,7 @@ button:hover {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(51, 51, 51, 0.7); /* Adjust the transparency here (0.7 for 70%) */
+  background-color: rgba(51, 51, 51, 0.6); /* Adjust the transparency here (0.6 for 60%) */
   color: #fff;
   padding: 10px 0;
   text-align: center;
@@ -138,6 +155,51 @@ button:hover {
   margin-top: 2px;
 }
 
+.seat {
+	font-weight: bold;
+	font-style: normal;
+	color: #993366;
+	font-size: 25px;
+	font-family: Times New Roman;
+}
+
+/* Seat map image style */
+.seatmap {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 100px;
+}
+
+.other-message {
+  margin-bottom: 10px;
+  color: grey;
+  font-style: italic;
+  font-size: 18px;
+  font-family: Times New Roman;
+}
+
+img#parkingticket {
+   width: 100%;
+   height: auto;
+}
+
+.break-line{
+  border: none; /* Remove default border */
+  border-top: 2px solid #ccc; /* Apply a custom border */
+  margin-top: 20px; /* Example margin */
+}
+
+.guest-ticket{
+	background-color: #996633;
+	padding: 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-style: normal;
+	color: white;
+	font-size: 25px;
+	font-family: Times New Roman;
+}
+  
 /* Media query for responsive design 在屏幕宽度小于像素时应用这些规则 */
 @media screen and (max-width: 450px) {
   body {
@@ -166,5 +228,7 @@ button:hover {
     margin-top: 20px;
   }
   
+
+
   
 }

@@ -10,35 +10,125 @@
   <div class="countdown-banner" id="countdownBanner"></div>
   
   <div class = "container">
-      <img src="./images/logo.png" alt="" id="logo">
-	  <h1>Welcome to Greenworld Logistics Anniversary Dinner</h1>
+      <img src="./images/logo.jpg" alt="" id="logo">
+	  <h1>Big Welcome to Greenworld’s 10th anniversary!</h1>
 	  <div class="message" id="message"></div>
-	  <div class="seat-number" id="seatNumber"></div>
-	  <img src="./images/seatmap.jpeg" alt="Seat Map" id="seatmap">
+	  <div id="parkingTicketSection"></div> <!-- Section for parking ticket image and line -->
+	  <div class="seat-number-message" id="seatNumber"></div>
+	  <img src="" alt="Seat Map" id="seatmap">
   </div>
 
-  <script src="seat.js"></script>
   <script>
-    window.onload = function() {
+    window.onload =  async function() {
+	  const container = document.querySelector('.container');
+	  
       const urlParams = new URLSearchParams(window.location.search);
       const driving = urlParams.get('driving');
-      const name = urlParams.get('name');
-
+      const companyName = urlParams.get('companyName');
+	  const guestName = urlParams.get('guestName'); // Get guest name from URL parameters
+	  
+      const parkingTicketSection = document.getElementById('parkingTicketSection');
       const messageDiv = document.getElementById('message');
       const seatNumberDiv = document.getElementById('seatNumber');
+	  const seatMapImage = document.getElementById('seatmap');
+	  
+	  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       if (driving === 'yes') {
-        messageDiv.textContent = "You may show your parking ticket at the counter at the end of the event to redeem parking fees. Enjoy the dinner!";
+	    // Display message
+        let messageContent = `<p>We hope you can enjoy yourself tonight!</p>`;
+		messageContent += `<p>Please collect your parking ticket at the registration table by showing:</p>`;
+		messageDiv.innerHTML = messageContent;
+		
+	 	// Display the guest's ticket message
+        if (guestName) {
+          const guestTicketMessage = `${guestName}'s Ticket`; // Guest name followed by "'s Ticket"
+          const guestTicketDiv = document.createElement('div');
+          guestTicketDiv.innerHTML = `<p class="guest-ticket">${guestTicketMessage}</p>`;
+          parkingTicketSection.appendChild(guestTicketDiv);
+        }
+	  
+		// Display parking ticket image 
+        const parkingTicketImage = document.createElement('img');
+        parkingTicketImage.src = "./images/parking ticket.jpg";
+        parkingTicketImage.alt = "Parking Ticket";
+        parkingTicketImage.id = "parkingticket";
+        parkingTicketSection.appendChild(parkingTicketImage);
+		
+		// Display line
+        const breakLine = document.createElement('hr');
+        breakLine.className = "break-line";
+        parkingTicketSection.appendChild(breakLine);
+		
       } else if (driving === 'no') {
-        messageDiv.textContent = "Enjoy the dinner!";
+        messageDiv.textContent = "";
       } else {
         messageDiv.textContent = "Invalid selection";
       }
+	  
+	  
+	  // Fetch seat number from the backend based on companyName
+      if (companyName) {
+        try {
+          const response = await fetch(`http://127.0.0.1:5000/get_seat_info?companyName=${companyName}`);
+          const data = await response.json();
 
-      // Extracting seat number from the seats object
-      if (name && seats[name]) {
-	    const seatNumberMessage = name + `'s seat is: <span class="bold"> ${seats[name]} </span>`;
-        seatNumberDiv.innerHTML = seatNumberMessage;
+          const seatNumberMessage = `Here is your table number <br> <br> <span class="seat"> Table Number: ${data.tableNumber}</span>. <br> <br> For more help and info, please look for the responsible server for your table!`;
+          seatNumberDiv.innerHTML = `<p class="other-message">${seatNumberMessage}</p>`;
+
+          // Set the seat map image source based on the table number
+          let seatMapImagePath = "";
+          switch (data.tableNumber) {
+            case 'Table 1':
+              seatMapImagePath = "./images/seatmap-table1.png";
+              break;
+			case 'Table 2':
+              seatMapImagePath = "./images/seatmap-table2.png";
+              break;
+			case 'Table 3':
+              seatMapImagePath = "./images/seatmap-table3.png";
+              break;
+			case 'Table 3A':
+              seatMapImagePath = "./images/seatmap-table3A.png";
+              break;
+			case 'Table 5':
+              seatMapImagePath = "./images/seatmap-table5.png";
+              break;
+			case 'Table 6':
+              seatMapImagePath = "./images/seatmap-table6.png";
+              break;
+			case 'Table 7':
+              seatMapImagePath = "./images/seatmap-table7.png";
+              break;
+			case 'Table 8':
+              seatMapImagePath = "./images/seatmap-table8.png";
+              break;
+			case 'Table 9':
+              seatMapImagePath = "./images/seatmap-table9.png";
+              break;
+			case 'Table 10':
+              seatMapImagePath = "./images/seatmap-table10.png";
+              break;	
+			case 'Table 11':
+              seatMapImagePath = "./images/seatmap-table11.png";
+              break;	
+			case 'Table 12':
+              seatMapImagePath = "./images/seatmap-table12.png";
+              break;
+			case 'Table 13':
+              seatMapImagePath = "./images/seatmap-table13.png";
+              break;
+			case 'VIP':
+			  seatMapImagePath = "./images/seatmap-tableVIP.png";
+			  break;
+            default:
+              seatMapImagePath = "./images/seatmap-default.png"; // Default image if seat not found
+              break;
+          }
+          seatMapImage.src = seatMapImagePath;
+        } catch (error) {
+          console.error('Error fetching seat information:', error);
+        }
       }
 
       // Show countdown banner after 5 seconds delay
