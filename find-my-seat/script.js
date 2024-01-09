@@ -63,7 +63,7 @@ function handleDrivingSelection() {
     const enteredCompany = companySelect.value;
 
     // Fetch company list from backend to validate against entered company
-    fetch('http://127.0.0.1:5000/company_list')
+    fetch('http://8.217.178.249/company_list')
       .then(response => response.json())
       .then(companies => {
         const isCompanyValid = companies.includes(enteredCompany);
@@ -120,7 +120,7 @@ function handleFindSeatButtonClick() {
 		};
 
 		// Send a POST request to your Flask server to update the check-in status
-		fetch('http://127.0.0.1:5000/checkin', {
+		fetch('http://8.217.178.249/checkin', {
 		  method: 'POST',
 		  headers: {
 			'Content-Type': 'application/json'
@@ -168,7 +168,7 @@ window.onload = function() {
   const drivingNo = document.getElementById('no'); // Add reference to the 'No' radio button
 
   // Function to populate company list on page load
-  fetch('http://127.0.0.1:5000/company_list')
+  fetch('http://8.217.178.249/company_list')
     .then(response => response.json())
     .then(companies => {
       companies.forEach(company => {
@@ -187,7 +187,7 @@ window.onload = function() {
 	  const enteredCompany = companyInput.value;
 
 	  // Fetch company list from backend to validate against entered company
-	  fetch('http://127.0.0.1:5000/company_list')
+	  fetch('http://8.217.178.249/company_list')
 		.then(response => response.json())
 		.then(companies => {
 		  const isCompanyValid = companies.includes(enteredCompany);

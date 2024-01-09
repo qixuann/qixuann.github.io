@@ -1,15 +1,24 @@
 <template>
   <div>
-    <h1>Parking Redemption</h1>
+    <h1>Parking Tickets Redemption</h1>
     <div class="table-toolbar">
-      <el-button @click="fetchGuestsData" type="primary" icon="el-icon-refresh">Refresh</el-button>
+      <el-button @click="fetchGuestsData" type="primary">Refresh</el-button>
     </div>
     <!-- Table for Non-Redeemed Guests -->
     <el-table :data="guests" v-if="guests.length > 0" style="width: 100%">
+      <el-table-column label="Company Name" prop="companyName"></el-table-column>
       <el-table-column label="Guest Name" prop="guestName"></el-table-column>
       <el-table-column label="Table Number" prop="tableNo"></el-table-column>
-      <el-table-column label="Check-in Status" prop="checkin"></el-table-column>
-      <el-table-column label="Driving" prop="driving"></el-table-column>
+      <el-table-column label="Check-in Status" prop="checkin">
+        <template #default="{ row }">
+          <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="Driving" prop="driving">
+        <template #default="{ row }">
+          <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="Redeem Status">
         <template v-slot="{ row }">
           <el-checkbox v-model="row.redeem" @change="updateRedeemStatus(row.guestID, row.redeem)"></el-checkbox>
@@ -25,11 +34,24 @@
     <!-- Table for Redeemed Guests -->
     <h2 style="padding-top: 50px;">Redeemed Guests</h2>
     <el-table :data="redeemedGuests" v-if="redeemedGuests.length > 0" style="width: 100%">
+      <el-table-column label="Company Name" prop="companyName"></el-table-column>
       <el-table-column label="Guest Name" prop="guestName"></el-table-column>
       <el-table-column label="Table Number" prop="tableNo"></el-table-column>
-      <el-table-column label="Check-in Status" prop="checkin"></el-table-column>
-      <el-table-column label="Driving" prop="driving"></el-table-column>
-      <el-table-column label="Redeem Status" prop="redeem"></el-table-column>
+      <el-table-column label="Check-in Status" prop="checkin">
+        <template #default="{ row }">
+          <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="Driving" prop="driving">
+        <template #default="{ row }">
+          <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="Redeem Status" prop="redeem">
+        <template #default="{ row }">
+          <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="Updated At" prop="update_time"></el-table-column>
     </el-table>
     <div v-else>
@@ -41,7 +63,7 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { ElTable, ElTableColumn, ElCheckbox, ElMessageBox, ElButton} from 'element-plus';
+import {ElTable, ElTableColumn, ElCheckbox, ElMessageBox, ElButton, ElTag} from 'element-plus';
 
 export default {
   components: {
@@ -49,6 +71,7 @@ export default {
     ElTableColumn,
     ElCheckbox,
     ElButton,
+    ElTag,
   },
   setup() {
     const guests = ref([]); // Initialize guests data
@@ -110,7 +133,7 @@ export default {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ redeem: newStatus ? 'Yes' : 'No' }),
+            body: JSON.stringify({redeem: newStatus ? 'Yes' : 'No'}),
           });
           if (!response.ok) {
             throw new Error('Failed to update redeem status');

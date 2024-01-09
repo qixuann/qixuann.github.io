@@ -2,22 +2,15 @@
   <div>
     <h1>Guest Check-In Status</h1>
     <div class="table-toolbar">
-      <el-button @click="fetchGuestsData" type="primary" icon="el-icon-refresh">Refresh</el-button>
+      <el-button @click="fetchGuestsData" type="primary">Refresh</el-button>
     </div>
     <div class="table-container">
-      <el-table :data="guestList" height="200" style="width: 100%">
-        <el-table-column prop="guestName" label="Guest Name"></el-table-column>
+      <el-table :data="guestList" height="500" style="width: 100%">
+        <el-table-column prop="companyName" label="Company Name"></el-table-column>
         <el-table-column prop="tableNo" label="Table Number"></el-table-column>
         <el-table-column prop="checkin" label="Check-in Status">
           <template #default="{ row }">
             <el-tag :type="row.checkin === 'Yes' ? 'success' : 'danger'">{{ row.checkin }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column prop="driving" label="Driving">
-          <template #default="{ row }">
-            <el-tag v-if="row.driving === 'Yes'" type="success">Yes</el-tag>
-            <el-tag v-else-if="row.driving === 'No'" type="danger">No</el-tag>
-            <!-- If it's empty, don't render any tag -->
           </template>
         </el-table-column>
         <el-table-column prop="update_time" label="Updated At"></el-table-column>

@@ -70,7 +70,7 @@
 	  // Fetch seat number from the backend based on companyName
       if (companyName) {
         try {
-          const response = await fetch(`http://127.0.0.1:5000/get_seat_info?companyName=${companyName}`);
+          const response = await fetch(`http://8.217.178.249/get_seat_info?companyName=${companyName}`);
           const data = await response.json();
 
           const seatNumberMessage = `Here is your table number <br> <br> <span class="seat"> Table Number: ${data.tableNumber}</span>. <br> <br> For more help and info, please look for the responsible server for your table!`;
