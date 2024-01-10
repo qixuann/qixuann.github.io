@@ -79,7 +79,7 @@ export default {
 
     const fetchGuestsData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/ticket_redeem');
+        const response = await fetch('https://8.217.178.249/ticket_redeem');
         if (!response.ok) {
           throw new Error('Failed to fetch data for guests');
         }
@@ -103,7 +103,7 @@ export default {
 
         guests.value = data;
 
-        const redeemedResponse = await fetch('http://127.0.0.1:5000/redeemed_guests');
+        const redeemedResponse = await fetch('https://8.217.178.249/redeemed_guests');
         if (!redeemedResponse.ok) {
           throw new Error('Failed to fetch data for redeemed guests');
         }
@@ -128,7 +128,7 @@ export default {
         type: 'warning'
       }).then(async () => {
         try {
-          const response = await fetch(`http://127.0.0.1:5000/update_redeem_status/${guestID}`, {
+          const response = await fetch(`https://8.217.178.249/update_redeem_status/${guestID}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
