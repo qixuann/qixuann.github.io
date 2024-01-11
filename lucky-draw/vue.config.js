@@ -1,7 +1,9 @@
 module.exports = {
     // https://cli.vuejs.org/zh/config/#lintonsave
     lintOnSave: 'error', // [true, false, 'error', 'warning', 'default']
-    publicPath: './', // 线上构建出来是相对路径在demo页才好展示
+    publicPath: process.env.NODE_ENV === 'production'
+      ? '/lucky-draw-portal/'
+      : '/',
     configureWebpack: config => {
         // 线上允许debugger
         if (config.mode === 'production') {
@@ -10,7 +12,7 @@ module.exports = {
     },
     chainWebpack: config => {
         config.plugin('html').tap(args => {
-            args[0].title = '【GitHub】2077年终大抽奖';
+            args[0].title = 'Greenworld Logistics Anniversary Dinner';
             return args;
         });
     },
