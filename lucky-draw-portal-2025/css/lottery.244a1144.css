@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: Monospace;
+  font-size: 13px;
+  line-height: 24px;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+}
+
+a {
+  color: #ff0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  text-transform: uppercase;
+}
+
+#info {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+a, button, input, select {
+  pointer-events: auto;
+}
+
+.dg.ac {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2 !important;
+}
+
+#overlay {
+  position: absolute;
+  font-size: 16px;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#overlay button {
+  background: transparent;
+  border: 0;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#notSupported {
+  width: 50%;
+  margin: auto;
+  background-color: red;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#menu {
+  position: relative; /* 修改为相对定位 */
+  bottom: auto;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.element {
+  width: 120px;
+  height: 140px; /* 缩小高度 */
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+  border: 1px solid rgba(127, 255, 255, 0.25);
+  font-family: Helvetica, sans-serif;
+  line-height: normal;
+  cursor: default;
+  margin: 10px auto; /* 增加自动外边距 */
+}
+
+.element:hover {
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.75);
+  border: 1px solid rgba(127, 255, 255, 0.75);
+}
+
+.element .number {
+  position: absolute;
+  top: 10px; /* 调整位置 */
+  right: 10px;
+  font-size: 10px; /* 缩小字体 */
+  color: rgba(127, 255, 255, 0.75);
+}
+
+.element .symbol {
+  position: absolute;
+  top: 30px; /* 调整位置 */
+  left: 0;
+  right: 0;
+  font-size: 40px; /* 缩小字体 */
+  font-weight: 700;
+  color: hsla(0, 0%, 100%, 0.75);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
+}
+
+.element .details {
+  position: absolute;
+  bottom: 10px; /* 调整位置 */
+  left: 0;
+  right: 0;
+  font-size: 12px; /* 缩小字体 */
+}
+
+/* 新增：纵向布局核心调整 */
+.lottery-wrap[data-v-60f683e5] {
+  flex-direction: column;
+  height: 100vh;
+}
+
+.lottery-header[data-v-60f683e5] {
+  height: 60px; /* 缩小高度 */
+  font-size: 18px; /* 缩小字体 */
+}
+
+.lottery-content[data-v-60f683e5] {
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-section[data-v-60f683e5] {
+  width: 100%;
+  height: 40vh; /* 固定3D区域高度 */
+  order: 1; /* 调整显示顺序 */
+}
+
+.left-section[data-v-60f683e5] {
+  width: 100%;
+  margin-left: 0;
+  order: 2; /* 调整显示顺序 */
+}
+
+.prize-wrap[data-v-20a701d2] {
+  width: 100%;
+  min-width: auto;
+  height: auto;
+  max-height: 35vh; /* 限制奖品区域高度 */
+  overflow-y: auto; /* 允许垂直滚动 */
+}
+
+.prize-list[data-v-20a701d2] {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.prize-item[data-v-20a701d2] {
+  width: 45%; /* 每行显示2个 */
+  height: 90px; /* 缩小高度 */
+  margin: 5px;
+  padding: 10px; /* 调整内边距 */
+}
+
+.lottery-action[data-v-39c0ef9a] {
+  height: 80px;
+  order: 3; /* 调整显示顺序 */
+}
+
+/* 保留原有动画效果 */
+@keyframes animate-positive-data-v-20a701d2 {
+  0% { width: 0; }
+}
+
+@keyframes progress-bar-stripes-data-v-20a701d2 {
+  0% { background-position: 8px 0; }
+  to { background-position: 0 0; }
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+  .element {
+    width: 100px;
+    height: 120px;
+  }
+  
+  .prize-item[data-v-20a701d2] {
+    width: 90%; /* 小屏幕单列显示 */
+  }
+  
+  .element .symbol {
+    font-size: 30px;
+  }
+}
