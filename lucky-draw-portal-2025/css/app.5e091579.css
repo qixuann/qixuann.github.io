@@ -1,1 +1,44 @@
-*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:-apple-system-font,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Arial,sans-serif}#app,body,html{height:100%;width:100%}#app{color:#2c3e50}li,ul{padding:0;margin:0;list-style:none}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 移除默认字体设置，使用 lottery.css 的 Monospace */
+}
+
+#app, body, html {
+  height: 100%;
+  width: 100%;
+  /* 强制横向布局 */
+  min-width: 100vh; /* 高度作为最小宽度 */
+  min-height: 100vw; /* 宽度作为最小高度 */
+  transform: rotate(0deg); /* 为可能需要的旋转做准备 */
+  overflow-x: auto; /* 允许横向滚动 */
+}
+
+#app {
+  color: #fff; /* 改为浅色文字 */
+  background: #000; /* 黑色背景匹配 lottery.css */
+  display: flex;
+  flex-direction: row; /* 横向排列子元素 */
+}
+
+/* 旋转整个应用（如果需要强制横向） */
+@media screen and (orientation: portrait) {
+  #app {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+li, ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
